@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+      
+    <style>
+      #ButtonLogin, #ButtonCadastro {
+        padding: 10px 20px;
+        font-size: 20px;
+        margin: 5px;
+        min-width:150px;
+        }
+      #linkCadastro{
+        color: white;
+      }
+      .input-group-prepend {
+          width : 25%;
+      }
+      .input-group-prepend span {
+          width: 100%;
+          overflow: hidden;
+      } 
+    </style>
+
+    <title>Home</title>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand" href="">Mapa da Saúde</a>
+    </nav>
+    <img src="{% static 'img/imagem.png' %}" 
+    class="mx-auto d-block img-fluid" style="width:30%; height:30%"> 
+    <div align="center">
+      <div class="jumbotron" style="width:30%; height:30%">
+        <form action="" method='POST'>
+          {% csrf_token %}
+
+          <p><strong>{{form.non_field_errors}}</strong></p>
+
+          {% for field in form %}
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">{{ field.label_tag }}</span>
+            </div>
+            {{ field }}
+            {{ field.errors }}
+          </div>
+          {% endfor %}
+
+
+        <div class="btn-group">
+          <button type="submit" id = "ButtonLogin" class="btn btn-primary btn-lg">
+            Entrar
+          </button>
+        </form>
+        <form action="{% url 'register' %}" method='GET'>
+          <button type="submit" id = "ButtonCadastro" class="btn btn-success btn-lg">
+            Cadastre-se
+          </button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

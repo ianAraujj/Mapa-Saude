@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block style %}
+  <style>
+    #ButtonMapa, #ButtonAgravo, #ButtonPaciente {
+        padding: 10px 20px;
+        font-size: 20px;
+        margin: 10px;
+        min-width:400px;
+        }
+    #linkCadastro{
+        color: white;
+    } 
+  </style>
+
+  <title>Página do Usuário</title>
+{% endblock %}
+{% block body %}
+<img src="{% static 'img/imagem.png' %}" 
+        class="mx-auto d-block img-fluid" style="width:30%; height:30%">
+  <div align="center">
+    Olá {{ user.username }} ({{ user.nome }})
+    <div class="jumbotron" style="width:40%; height:40%">
+      <div class="btn-group-vertical">
+        <form action="" method="GET">
+          <button type="submit" id = "ButtonPaciente" class="btn btn-primary btn-lg">
+            Registrar Paciente
+          </button>
+        </form>
+        <form action="" method="GET">
+          <button type="submit" id = "ButtonAgravo" class="btn btn-warning btn-lg">
+            <div id="linkCadastro">Notificar Agravo</div>
+          </button>
+        </form>
+        <form action="" method="GET">
+          <button type="submit" id = "ButtonMapa" class="btn btn-info btn-lg">
+            Consultar o Mapa
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+</html>
